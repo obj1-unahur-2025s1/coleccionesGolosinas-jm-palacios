@@ -1,0 +1,111 @@
+import golosinas.*
+
+describe "test Golosinas" {
+
+  test "el bombon el precio es 5,pesa 15, el sabor es frutilla, es libre de gluten" {
+    assert.equals(5,bombon.precio())
+    assert.equals(15, bombon.peso())
+    assert.equals(frutilla, bombon.sabor())
+    assert.notThat(bombon.contieneGluten())
+  }
+  test "el alfajor el precio es 12, pesa 300, el sabor es chocolata, no es libre de gluten" {
+    assert.equals(12, alfajor.precio())
+    assert.equals(300, alfajor.peso())
+    assert.equals(chocolate, alfajor.sabor())
+    assert.that(alfajor.contieneGluten())
+  }
+  test "el caramelo el precio es 1, pesa 5, el sabor es frutilla, es libre de gluten" {
+    assert.equals(1, caramelo.precio())
+    assert.equals(5, caramelo.peso())
+    assert.equals(frutilla, caramelo.sabor())
+    assert.notThat(caramelo.contieneGluten())
+  }
+  test "el chupetin el precio es 2, pesa 7, el sabor es naranja, es libre de gluten" {
+    assert.equals(2, chupetin.precio())
+    assert.equals(7, chupetin.peso())
+    assert.equals(naranja, chupetin.sabor())
+    assert.notThat(chupetin.contieneGluten())
+  }
+  test "la oblea el precio es 5, pesa 250, el sabor es vainilla, no es libre de gluten" {
+    assert.equals(5, oblea.precio())
+    assert.equals(250, oblea.peso())
+    assert.equals(vainilla, oblea.sabor())
+    assert.that(oblea.contieneGluten())
+  }
+  test "el chocolatin con peso de 40, el precio es 20, el sabor es chocolate, no es libre de gluten" {
+    chocolatin.indicarPesoInicial(40)
+    assert.equals(20, chocolatin.precio())
+    assert.equals(40, chocolatin.peso())
+    assert.equals(chocolate, chocolatin.sabor())
+    assert.that(chocolatin.contieneGluten())
+  }
+   test "el chocolatin con peso de 100, el precio es 50, el sabor es chocolate, no es libre de gluten" {
+    chocolatin.indicarPesoInicial(100)
+    assert.equals(50, chocolatin.precio())
+    assert.equals(100, chocolatin.peso())
+    assert.equals(chocolate, chocolatin.sabor())
+    assert.that(chocolatin.contieneGluten())
+  }
+   test "la pastilla tutti-frutti sin gluten, el precio es 7, el peso 5, el sabor frutilla y es libre de gluten" {
+    assert.equals(7, pastillaTuttiFrutti.precio())
+    assert.equals(5, pastillaTuttiFrutti.peso())
+    assert.equals(frutilla, pastillaTuttiFrutti.sabor())
+    assert.notThat(pastillaTuttiFrutti.contieneGluten())
+  }
+   test "la pastilla tutti-frutti con gluten, el precio es 10, el peso 5, el sabor frutilla y no es libre de gluten" {
+    pastillaTuttiFrutti.cambioConGluten()
+    assert.equals(10, pastillaTuttiFrutti.precio())
+    assert.equals(5, pastillaTuttiFrutti.peso())
+    assert.equals(frutilla, pastillaTuttiFrutti.sabor())
+    assert.that(pastillaTuttiFrutti.contieneGluten())
+  }
+  test "al bombon se le da dos mordiscos y su peso es de 7,8" {
+    bombon.mordisco()
+    bombon.mordisco()
+    assert.equals(7.8, bombon.peso())    
+  }
+  test "al alfajor se le da dos mordiscos y el peso es de 192" {
+    alfajor.mordisco()
+    alfajor.mordisco()
+    assert.equals(192, alfajor.peso())    
+  }
+  test "al caramelo se le da dos mordiscos y su peso es de 3" {
+    caramelo.mordisco()
+    caramelo.mordisco()
+    assert.equals(3, caramelo.peso())   
+  }
+  test "al chupetin se le da dos mordiscos y su peso es de 5.67" {
+    chupetin.mordisco()
+    chupetin.mordisco()
+    assert.equals(5.67, chupetin.peso())    
+  }
+  test "la oblea se le da dos mordiscos y su peso es de 46.875" {
+    oblea.mordisco()
+    oblea.mordisco()
+    oblea.mordisco()
+    assert.equals(46.875, oblea.peso())    
+  }
+   test "al chocolatin con peso de 40, luego de dos mordisco el peso es de 36" {
+    chocolatin.indicarPesoInicial(40)
+    chocolatin.mordisco()
+    chocolatin.mordisco()
+    assert.equals(36, chocolatin.peso())    
+  }
+  test "al chocolatin con peso de 100, luego de dos mordisco el peso es de 96" {
+    chocolatin.indicarPesoInicial(100)
+    chocolatin.mordisco()
+    chocolatin.mordisco()
+    assert.equals(96, chocolatin.peso())    
+  }
+  test "la pastilla tutti-frutti sin gluten, luego de dos mordiscos el sabor es naranja" {
+    pastillaTuttiFrutti.mordisco()
+    pastillaTuttiFrutti.mordisco()
+    assert.equals(naranja, pastillaTuttiFrutti.sabor())    
+  }  
+  test "la pastilla tutti-frutti con gluten, luego de dos mordiscos el sabor es naranja" {
+    pastillaTuttiFrutti.cambioConGluten()
+    pastillaTuttiFrutti.mordisco()
+    pastillaTuttiFrutti.mordisco()
+    assert.equals(naranja, pastillaTuttiFrutti.sabor())    
+  }  
+}
